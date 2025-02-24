@@ -11,15 +11,6 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Hardcoded query: DELETE FROM course_names WHERE id = 3;
-pool.query(`DELETE FROM course_names WHERE id = $1`, [3], (err: Error, result: QueryResult) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(`${result.rowCount} row(s) deleted!`);
-  }
-});
-
 // Query database
 pool.query('SELECT * FROM course_names', (err: Error, result: QueryResult) => {
   if (err) {

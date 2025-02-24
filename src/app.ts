@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import { Client } from 'pg';
 
+
 const db = new Client({
   host: 'localhost',
   user: 'postgres',
@@ -42,6 +43,7 @@ function startApp() {
     }
   });
 }
+
 
 function viewDepartments() {
   db.query('SELECT * FROM department', (err, results) => {
