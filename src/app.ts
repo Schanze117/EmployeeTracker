@@ -2,20 +2,7 @@ import inquirer from 'inquirer';
 import { pool, connectToDb } from './connection.js';
 await connectToDb();
 
-
-// const db = new Client({
-//   host: 'localhost',
-//   user: 'postgres',
-//   password: 'password',
-//   database: 'employee_db'
-// });
-
-// db.connect(err => {
-//   if (err) throw err;
-//   console.log('Connected to PostgreSQL database');
-//   startApp();
-// });
-
+// This is the main function that starts the application
 async function startApp() {
   try {
     const { action } = await inquirer.prompt([
@@ -42,7 +29,7 @@ async function startApp() {
         ],
       }
     ]);
-
+// This switch statement handles the user's choice in the prompt
     switch (action) {
       case 'View all departments':
         await viewDepartments();
@@ -98,7 +85,7 @@ async function startApp() {
     startApp();
   }
 }
-
+// These functions handles the database queries for each action
 async function viewDepartments() {
     try {
       const { rows } = await pool.query('SELECT * FROM department');
