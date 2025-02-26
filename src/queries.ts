@@ -94,18 +94,6 @@ export const viewUtilizedBudgetByDepartment = async () => {
   `);
   console.table(result.rows);
 };
-export const viewAllDepartments = async () => {
-  const result = await pool.query('SELECT * FROM department');
-  console.table(result.rows);
-};
-export const viewAllRoles = async () => {
-  const result = await pool.query('SELECT * FROM role');
-  console.table(result.rows);
-};
-export const viewAllEmployees = async () => {
-  const result = await pool.query('SELECT * FROM employee');
-  console.table(result.rows);
-};
 
 export { pool };
 
