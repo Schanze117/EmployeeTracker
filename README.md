@@ -44,7 +44,7 @@
   
   ## Features
   
-  This project mainly uses the Inquirer and PG packages.
+  This project mainly uses the Node.js, Inquirer, and PostgreSQL packages.
   
   ## How to Contribute
   
