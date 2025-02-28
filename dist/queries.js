@@ -1,5 +1,6 @@
 import { pool } from './connection.js';
 import inquirer from 'inquirer';
+// This file contains all the queries used in the application that interact with the database
 export const viewDepartments = async () => {
     const result = await pool.query('SELECT * FROM department');
     console.table(result.rows);

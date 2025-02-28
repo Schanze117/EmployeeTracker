@@ -1,17 +1,7 @@
 import inquirer from 'inquirer';
 import { pool, connectToDb } from './connection.js';
 await connectToDb();
-// const db = new Client({
-//   host: 'localhost',
-//   user: 'postgres',
-//   password: 'password',
-//   database: 'employee_db'
-// });
-// db.connect(err => {
-//   if (err) throw err;
-//   console.log('Connected to PostgreSQL database');
-//   startApp();
-// });
+// This is the main function that starts the application
 async function startApp() {
     try {
         const { action } = await inquirer.prompt([
@@ -38,6 +28,7 @@ async function startApp() {
                 ],
             }
         ]);
+        // This switch statement handles the user's choice in the prompt
         switch (action) {
             case 'View all departments':
                 await viewDepartments();
@@ -93,6 +84,7 @@ async function startApp() {
         startApp();
     }
 }
+// These functions handles the database queries for each action
 async function viewDepartments() {
     try {
         const { rows } = await pool.query('SELECT * FROM department');
@@ -186,7 +178,7 @@ async function updateEmployeeRole() {
     try {
         const { employee_id, new_role_id } = await inquirer.prompt([
             { name: 'employee_id', message: 'Enter employee ID to update:' },
-            { name: 'new_role_id', message: 'Enter new role ID:' }
+            { name: 'new_role_id', message: 'Enter new role ID:' },
         ]);
         await pool.query('UPDATE employee SET role_id = $1 WHERE id = $2', [new_role_id, employee_id]);
         console.log('Employee role updated');
